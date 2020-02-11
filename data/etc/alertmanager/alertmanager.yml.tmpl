@@ -1,5 +1,10 @@
 global:
   resolve_timeout: 1m
+  smtp_from: '${EMAIL_FROM}'
+  smtp_smarthost: '${SMTP_HOST_PORT}'
+  smtp_auth_username: '${SMTP_USERNAME}'
+  smtp_auth_password: '${SMTP_PASSWORD}'
+  smtp_require_tls: ${SMTP_TLS}
 route:
   receiver: 'slack-all'
   group_wait: 10s
@@ -29,6 +34,9 @@ receivers:
           tls_config:
             insecure_skip_verify: true
   - name: 'slack-prod'
+    email_configs:
+      - to: '${EMAIL_TO}'
+        send_resolved: true
     slack_configs:
       - send_resolved: true
         title: '{{ template "custom_slack_title" . }}'
