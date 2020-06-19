@@ -3,7 +3,7 @@ LABEL website="Secure Docker Images https://secureimages.dev"
 LABEL description="We secure your business from scratch."
 LABEL maintainer="hireus@secureimages.dev"
 
-ARG ALERTMANAGER_VERSION=0.20.0
+ARG ALERTMANAGER_VERSION=0.21.0
 
 WORKDIR /alertmanager
 
